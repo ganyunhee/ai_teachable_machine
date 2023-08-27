@@ -279,5 +279,6 @@ Teachable Model. https://teachablemachine.withgoogle.com/train.
 Malamute vs Husky: All 10 Differences Explained. https://www.marvelousdogs.com/malamute-vs-husky/.
 Predictive Modeling: See the Future and Make More Profitable Decisions. https://www.appier.com/ko-kr/blog/predictive-modeling-see-the-future-and-make-more-profitable-decisions
 How to allow Chrome to access my camera on localhost?. https://stackoverflow.com/questions/16835421/how-to-allow-chrome-to-access-my-camera-on-localhost
+Making the world's easiest Artificial Intelligence (Teachable Machine, AI, Machine Learning). https://www.youtube.com/watch?v=USQGTW34lO8
 
 Photos acquired from Unsplash, Pexels, and Google Images.
