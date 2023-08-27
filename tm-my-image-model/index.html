@@ -46,6 +46,11 @@
             for (let i = 0; i < maxPredictions; i++) { // and class labels
                 labelContainer.appendChild(document.createElement("div"));
             }
+            
+            // Add an additional loop to create a third child node for explanations
+            for (let i = 0; i < 1; i++) {
+                labelContainer.appendChild(document.createElement("div"));
+            }
         }
 
         async function loop() {
@@ -53,6 +58,11 @@
             await predict();
             window.requestAnimationFrame(loop);
         }
+
+        // Add a prediction value threshold
+        const PREDICTION_THRESHOLD = 0.6;
+        const husky_desc = "The Siberian Husky is a striking and energetic breed of dog known for its captivating blue or multi-colored eyes, distinctive markings, and remarkable endurance. Originating in Siberia, these dogs were bred by the Chukchi people for sledding and hauling heavy loads across long distances in cold climates. Their dense double coat helps them stay warm in freezing temperatures, and their erect triangular ears give them an alert and attentive appearance. Siberian Huskies are known for their friendly and outgoing nature, often forming strong bonds with people and other dogs. They possess an adventurous spirit and require regular exercise to channel their energy, making them suitable for active families who can provide them with the mental and physical stimulation they need.";
+        const malamute_desc = "The Alaskan Malamute is a powerful and majestic breed of dog known for its strong build, endurance, and friendly demeanor. Originating from the Arctic regions, they were initially bred for heavy-duty tasks like hauling sleds and pulling heavy loads in harsh conditions. With a dense double coat that offers protection against extreme cold, their distinctive appearance includes a plumed tail, erect ears, and a robust frame. Alaskan Malamutes are social and affectionate animals that often form strong bonds with their families. They require regular exercise and mental stimulation to stay content, and their gentle nature makes them suitable companions for families that can provide the necessary care and attention they need.";
 
         // run the webcam image through the image model
         async function predict() {
@@ -62,6 +72,17 @@
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
+            }
+            if (prediction[0].className == "Siberian Husky" && prediction[0].probability.toFixed(2) > PREDICTION_THRESHOLD) {
+                labelContainer.childNodes[2].innerHTML = husky_desc;
+            }
+
+            else if (prediction[1].className == "Alaskan Malamute" && prediction[1].probability.toFixed(2) > PREDICTION_THRESHOLD) {
+                labelContainer.childNodes[2].innerHTML = malamute_desc;
+            }
+
+            else {
+                labelContainer.childNodes[2].innerHTML = "UNDEFINED. 알 수 없음.";
             }
         }
     </script>
